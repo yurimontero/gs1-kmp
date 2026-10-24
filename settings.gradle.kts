@@ -29,3 +29,4 @@ rootProject.name = "gs1-kmp"
 
 include(":gs1-core")
 include(":gs1-compose")
+include(":sample")
