@@ -16,6 +16,34 @@ implementation("io.github.yurimontero:gs1-core:<version>")
 implementation("io.github.yurimontero:gs1-compose:<version>")
 ```
 
+## Usage
+
+```kotlin
+// Build and validate GS1 data (throws Gs1Exception with the exact problem)
+val message = Gs1Message.parse("(01)09501101020917(17)261231(10)ABC123")
+// or: Gs1Message.of("01" to "09501101020917", "17" to "261231", "10" to "ABC123")
+
+// GS1 DataMatrix
+val dataMatrix = Gs1DataMatrix.encode(message)          // smallest square symbol
+val svg = dataMatrix.toSvg(moduleSize = 0.5, unit = "mm")
+
+// GS1-128
+val gs1128 = Gs1Code128.encode(message)
+val barsSvg = gs1128.toSvg()                            // bars + human readable text
+
+// Reading scanner output
+val scanned = Gs1Message.parseElementString("]d2010950110102091717261231" + "10ABC123")
+scanned["10"]                                           // "ABC123"
+```
+
+With Compose Multiplatform (`gs1-compose`):
+
+```kotlin
+Gs1DataMatrixBarcode(message, modifier = Modifier.size(160.dp))
+Gs1Code128Barcode(message)                              // bars + human readable text
+val bitmap = Gs1DataMatrix.encode(message).toImageBitmap(modulePixels = 8)
+```
+
 ## Building
 
 Requirements: JDK 17+ and the Android SDK (open the project once in Android Studio or IntelliJ IDEA, or create `local.properties` with `sdk.dir=/path/to/Android/Sdk`).
