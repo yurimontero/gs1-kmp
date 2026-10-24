@@ -1,0 +1,11 @@
+gs1-kmp
+
+This product includes material derived from the following Apache License 2.0 works:
+
+- GS1 Barcode Syntax Dictionary (https://github.com/gs1/gs1-syntax-dictionary)
+  Copyright (c) 2020-2021 BWIPP project, (c) 2020-2021 Zint Project, (c) 2021-2025 GS1 AISBL
+  Used for: tools/gs1-syntax-dictionary.txt and the generated AiDictionary.kt
+
+- GS1 Syntax Engine (https://github.com/gs1/gs1-syntax-engine)
+  Copyright (c) 2022-2025 GS1 AISBL
+  Used for: Linters.kt (port of the GS1 Barcode Syntax Tests) and the generated LinterReferenceTest.kt
