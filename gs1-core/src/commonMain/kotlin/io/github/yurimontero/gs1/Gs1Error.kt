@@ -18,6 +18,10 @@ public enum class Gs1ErrorCode(public val description: String) {
     INVALID_COMPONENT_LENGTH("a component of the value has an incorrect length"),
     DUPLICATE_AI("AI appears more than once with different values"),
 
+    // Symbologies
+    GS1_128_TOO_LONG("too many data characters for one GS1-128 symbol (maximum 48)"),
+    DATA_MATRIX_TOO_LONG("too much data for the requested Data Matrix size"),
+
     // GS1 Barcode Syntax Tests
     NON_DIGIT_CHARACTER("non-digit character"),
     INVALID_CSET82_CHARACTER("character not allowed in GS1 AI data (CSET 82)"),
@@ -100,7 +104,11 @@ public class Gs1Error internal constructor(
             return buildString {
                 if (ai != null) append("AI (").append(ai).append("): ")
                 append(code.description)
-                if (value != null && end > start && end <= value.length) {
+                if (code == Gs1ErrorCode.GS1_128_TOO_LONG) {
+                    append(": ").append(length).append(" data characters")
+                } else if (code == Gs1ErrorCode.DATA_MATRIX_TOO_LONG) {
+                    append(": ").append(length).append(" data codewords")
+                } else if (value != null && end > start && end <= value.length) {
                     append(" at \"").appendRange(value, start, end).append("\" (position ").append(start).append(')')
                 } else if (ai == null && end > start) {
                     append(" (position ").append(start).append(')')
