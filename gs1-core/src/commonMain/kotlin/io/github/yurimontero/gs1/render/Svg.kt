@@ -4,6 +4,8 @@ import io.github.yurimontero.gs1.code128.Code128Symbol
 import io.github.yurimontero.gs1.code128.Gs1Code128
 import io.github.yurimontero.gs1.datamatrix.DataMatrixSymbol
 import io.github.yurimontero.gs1.datamatrix.Gs1DataMatrix
+import io.github.yurimontero.gs1.qrcode.QrCode
+import io.github.yurimontero.gs1.qrcode.QrCodeSymbol
 import kotlin.math.roundToLong
 
 /**
@@ -72,6 +74,35 @@ public fun DataMatrixSymbol.toSvg(
     quietZone: Int = Gs1DataMatrix.QUIET_ZONE_MODULES,
     darkColor: String = "#000000",
     lightColor: String? = "#ffffff",
+): String = matrixSvg(rows, columns, quietZone, moduleSize, unit, darkColor, lightColor) { row, column -> this[row, column] }
+
+/**
+ * Renders the symbol as an SVG document.
+ *
+ * Coordinates are in modules; [moduleSize] only sets the `width`/`height` attributes, in [unit].
+ * For print, pass the X-dimension in millimetres with `unit = "mm"`.
+ * The text is not included: place [QrCodeSymbol.humanReadable] or [QrCodeSymbol.text] near the symbol if needed.
+ *
+ * @param lightColor background colour, or `null` for a transparent background.
+ */
+public fun QrCodeSymbol.toSvg(
+    moduleSize: Double = 10.0,
+    unit: String = "",
+    quietZone: Int = QrCode.QUIET_ZONE_MODULES,
+    darkColor: String = "#000000",
+    lightColor: String? = "#ffffff",
+): String = matrixSvg(size, size, quietZone, moduleSize, unit, darkColor, lightColor) { row, column -> this[row, column] }
+
+/** One path with a rectangle per horizontal run of dark modules. */
+private inline fun matrixSvg(
+    rows: Int,
+    columns: Int,
+    quietZone: Int,
+    moduleSize: Double,
+    unit: String,
+    darkColor: String,
+    lightColor: String?,
+    isDark: (row: Int, column: Int) -> Boolean,
 ): String {
     val width = columns + 2 * quietZone
     val height = rows + 2 * quietZone
@@ -79,12 +110,12 @@ public fun DataMatrixSymbol.toSvg(
     for (row in 0 until rows) {
         var column = 0
         while (column < columns) {
-            if (!this[row, column]) {
+            if (!isDark(row, column)) {
                 column++
                 continue
             }
             val start = column
-            while (column < columns && this[row, column]) column++
+            while (column < columns && isDark(row, column)) column++
             val run = column - start
             path.append('M').append(start + quietZone).append(' ').append(row + quietZone)
                 .append('h').append(run).append("v1h").append(-run).append('z')

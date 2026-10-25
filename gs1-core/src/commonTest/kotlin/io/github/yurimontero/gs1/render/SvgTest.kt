@@ -3,6 +3,7 @@ package io.github.yurimontero.gs1.render
 import io.github.yurimontero.gs1.Gs1Message
 import io.github.yurimontero.gs1.code128.Gs1Code128
 import io.github.yurimontero.gs1.datamatrix.Gs1DataMatrix
+import io.github.yurimontero.gs1.qrcode.Gs1QrCode
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -22,6 +23,22 @@ class SvgTest {
         assertContains(svg, "width=\"${format(size * 0.5)}mm\"")
         assertContains(svg, "viewBox=\"0 0 $size $size\"")
         assertTrue(svg.endsWith("</svg>"))
+
+        val grid = Array(size) { BooleanArray(size) }
+        Regex("M(\\d+) (\\d+)h(\\d+)v1h-\\d+z").findAll(svg).forEach { m ->
+            val (x, y, w) = m.destructured
+            for (k in 0 until w.toInt()) grid[y.toInt()][x.toInt() + k] = true
+        }
+        assertEquals(symbol.toModules().map { it.toList() }, grid.map { it.toList() })
+    }
+
+    @Test
+    fun qrCodeSvgReproducesEveryModule() {
+        val symbol = Gs1QrCode.encode(Gs1Message.parse("(01)09501101020917(10)ABC123"))
+        val svg = symbol.toSvg(moduleSize = 0.4, unit = "mm")
+        val size = symbol.size + 8
+        assertContains(svg, "viewBox=\"0 0 $size $size\"")
+        assertContains(svg, "width=\"${format(size * 0.4)}mm\"")
 
         val grid = Array(size) { BooleanArray(size) }
         Regex("M(\\d+) (\\d+)h(\\d+)v1h-\\d+z").findAll(svg).forEach { m ->

@@ -21,6 +21,14 @@ public enum class Gs1ErrorCode(public val description: String) {
     // Symbologies
     GS1_128_TOO_LONG("too many data characters for one GS1-128 symbol (maximum 48)"),
     DATA_MATRIX_TOO_LONG("too much data for the requested Data Matrix size"),
+    QR_CODE_TOO_LONG("too much data for the requested QR Code version and error correction level"),
+
+    // GS1 Digital Link
+    DIGITAL_LINK_MALFORMED_URI("malformed GS1 Digital Link URI"),
+    DIGITAL_LINK_NO_PRIMARY_KEY("no GS1 Digital Link primary key (e.g. AI 01 or 00)"),
+    DIGITAL_LINK_INVALID_QUALIFIERS("invalid sequence of key qualifiers in the URI path"),
+    DIGITAL_LINK_INVALID_ATTRIBUTE("AI not allowed as a GS1 Digital Link query parameter"),
+    DIGITAL_LINK_AI_SHOULD_BE_IN_PATH("AI is a key qualifier and belongs in the URI path"),
 
     // GS1 Barcode Syntax Tests
     NON_DIGIT_CHARACTER("non-digit character"),
@@ -106,7 +114,7 @@ public class Gs1Error internal constructor(
                 append(code.description)
                 if (code == Gs1ErrorCode.GS1_128_TOO_LONG) {
                     append(": ").append(length).append(" data characters")
-                } else if (code == Gs1ErrorCode.DATA_MATRIX_TOO_LONG) {
+                } else if (code == Gs1ErrorCode.DATA_MATRIX_TOO_LONG || code == Gs1ErrorCode.QR_CODE_TOO_LONG) {
                     append(": ").append(length).append(" data codewords")
                 } else if (value != null && end > start && end <= value.length) {
                     append(" at \"").appendRange(value, start, end).append("\" (position ").append(start).append(')')

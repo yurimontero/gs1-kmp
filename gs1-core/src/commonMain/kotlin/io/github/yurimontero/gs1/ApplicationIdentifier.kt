@@ -43,6 +43,15 @@ public class ApplicationIdentifier internal constructor(
      */
     public val isPredefinedLength: Boolean,
     public val components: List<AiComponent>,
+    /** `true` if the AI may appear as a query parameter of a GS1 Digital Link URI (e.g. `?17=261231`). */
+    public val isDigitalLinkAttribute: Boolean = false,
+    /** `true` if the AI is a GS1 Digital Link primary key, e.g. (01) GTIN or (00) SSCC. */
+    public val isDigitalLinkPrimaryKey: Boolean = false,
+    /**
+     * For a primary key, the alternative qualifier sequences allowed after it in the URI path, e.g.
+     * `[[22, 10, 21], [235]]` for (01): any of 22, 10, 21 in that order, or 235. Empty otherwise.
+     */
+    public val digitalLinkQualifiers: List<List<String>> = emptyList(),
 ) {
     /** Minimum length of the data field. */
     public val minLength: Int = components.filter { !it.isOptional }.sumOf { it.minLength }
@@ -110,16 +119,18 @@ public class ApplicationIdentifier internal constructor(
         }
 
         private fun parseDictionaryLine(line: String): List<ApplicationIdentifier> {
-            val (codes, flags, spec, title) = line.split('|')
+            val (codes, flags, spec, title, dlpkey) = line.split('|', limit = 5)
             val components = spec.split(' ').map(::parseComponent)
             val predefined = flags.contains('*')
+            val attribute = flags.contains('?')
+            val primaryKey = dlpkey.isNotEmpty()
+            val qualifiers = if (dlpkey.isEmpty() || dlpkey == "-") emptyList() else dlpkey.split('|').map { it.split(',') }
+            fun create(code: String) = ApplicationIdentifier(code, title, predefined, components, attribute, primaryKey, qualifiers)
             val range = codes.split('-')
-            if (range.size == 1) return listOf(ApplicationIdentifier(codes, title, predefined, components))
+            if (range.size == 1) return listOf(create(codes))
             val first = range[0]
             val last = range[1]
-            return (first.toInt()..last.toInt()).map { number ->
-                ApplicationIdentifier(number.toString().padStart(first.length, '0'), title, predefined, components)
-            }
+            return (first.toInt()..last.toInt()).map { number -> create(number.toString().padStart(first.length, '0')) }
         }
 
         private fun parseComponent(token: String): AiComponent {

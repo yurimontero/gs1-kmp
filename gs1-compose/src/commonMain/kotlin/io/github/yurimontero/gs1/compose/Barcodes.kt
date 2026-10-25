@@ -18,12 +18,17 @@ import androidx.compose.ui.unit.constrainHeight
 import androidx.compose.ui.unit.constrainWidth
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import io.github.yurimontero.gs1.Gs1DigitalLink
 import io.github.yurimontero.gs1.Gs1Message
 import io.github.yurimontero.gs1.code128.Code128Symbol
 import io.github.yurimontero.gs1.code128.Gs1Code128
 import io.github.yurimontero.gs1.datamatrix.DataMatrixShape
 import io.github.yurimontero.gs1.datamatrix.DataMatrixSymbol
 import io.github.yurimontero.gs1.datamatrix.Gs1DataMatrix
+import io.github.yurimontero.gs1.qrcode.Gs1QrCode
+import io.github.yurimontero.gs1.qrcode.QrCode
+import io.github.yurimontero.gs1.qrcode.QrCodeSymbol
+import io.github.yurimontero.gs1.qrcode.QrErrorCorrection
 import kotlin.math.ceil
 
 /**
@@ -69,6 +74,53 @@ public fun Gs1DataMatrixBarcode(
 ) {
     val symbol = remember(message, shape) { Gs1DataMatrix.encode(message, shape) }
     Gs1DataMatrixBarcode(symbol, modifier, moduleSize, quietZone, darkColor, lightColor)
+}
+
+/**
+ * Shows a QR Code symbol, e.g. one made by [Gs1QrCode].
+ *
+ * Without a size from [modifier], each module is [moduleSize] (rounded to whole pixels).
+ * With a fixed size, the symbol is drawn as large as fits, centred, with whole-pixel modules.
+ */
+@Composable
+public fun Gs1QrCodeBarcode(
+    symbol: QrCodeSymbol,
+    modifier: Modifier = Modifier,
+    moduleSize: Dp = 4.dp,
+    quietZone: Int = QrCode.QUIET_ZONE_MODULES,
+    darkColor: Color = Color.Black,
+    lightColor: Color = Color.White,
+) {
+    Layout(
+        content = {},
+        modifier = modifier.drawBehind { drawQrCode(symbol, quietZone, darkColor, lightColor) },
+    ) { _, constraints ->
+        val module = moduleSize.roundToPx().coerceAtLeast(1)
+        val side = (symbol.size + 2 * quietZone) * module
+        layout(constraints.constrainWidth(side), constraints.constrainHeight(side)) {}
+    }
+}
+
+/**
+ * Shows [message] as a QR Code with its GS1 Digital Link URI, e.g. `https://example.com/01/09501101020917/10/ABC123`.
+ *
+ * @param domain scheme and domain of the URI; GS1's `https://id.gs1.org` by default.
+ * @throws io.github.yurimontero.gs1.Gs1Exception if the message cannot be a Digital Link URI (e.g. it has no
+ * GTIN, SSCC or other primary key) or does not fit; validate data beforehand.
+ */
+@Composable
+public fun Gs1QrCodeBarcode(
+    message: Gs1Message,
+    modifier: Modifier = Modifier,
+    domain: String = Gs1DigitalLink.CANONICAL_DOMAIN,
+    errorCorrection: QrErrorCorrection = QrErrorCorrection.M,
+    moduleSize: Dp = 4.dp,
+    quietZone: Int = QrCode.QUIET_ZONE_MODULES,
+    darkColor: Color = Color.Black,
+    lightColor: Color = Color.White,
+) {
+    val symbol = remember(message, domain, errorCorrection) { Gs1QrCode.encode(message, domain, errorCorrection) }
+    Gs1QrCodeBarcode(symbol, modifier, moduleSize, quietZone, darkColor, lightColor)
 }
 
 /** Default style of the human readable text under GS1-128 symbols. */

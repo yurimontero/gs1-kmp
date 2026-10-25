@@ -85,7 +85,7 @@ class Gs1DataMatrixTest {
 
     @Test
     fun smallestSymbolMatchesReference() {
-        // Verified bit for bit against ZXing's Data Matrix encoder and decoded by ZXing
+        // Checked bit for bit against an independent encoder and decoder
         assertSymbol(
             Gs1DataMatrix.encode(Gs1Message.of("90" to "A")),
             "#.#.#.#.#.",

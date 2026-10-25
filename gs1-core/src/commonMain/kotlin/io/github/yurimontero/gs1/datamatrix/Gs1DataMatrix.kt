@@ -281,8 +281,7 @@ internal object ReedSolomon {
         val result = IntArray(size.dataCodewords + size.errorCodewords)
         data.copyInto(result)
         val blocks = size.blocks
-        // In 144x144 symbols the error correction is interleaved starting with block 9, as readers
-        // expect (same as Zint and the ZXing decoder; see https://github.com/zxing-cpp/zxing-cpp/issues/259).
+        // In 144x144 symbols readers expect the error correction to be interleaved starting with block 9.
         val skew = size.rows == 144
         for (block in 0 until blocks) {
             val blockData = IntArray(size.blockDataCodewords(block)) { data[block + it * blocks] }

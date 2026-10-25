@@ -1,0 +1,215 @@
+# Kotlin names for every AI in gs1-syntax-dictionary.txt, used to generate Gs1Ai.kt.
+#
+# Format: AI or range | NAME | description
+#   - Single AI: NAME is a constant (UPPER_SNAKE_CASE).
+#   - Range: NAME is a function "name(parameter)" or "name(parameter=first)": the parameter value
+#     `first` (default 0) maps to the first AI of the range, e.g. netWeightKg(3) -> "3103".
+#
+# generate_ai_dictionary.py fails if an AI of the dictionary has no entry here.
+
+00        | SSCC                              | Serial Shipping Container Code
+01        | GTIN                              | Global Trade Item Number
+02        | CONTENT                           | GTIN of the trade items contained in a logistic unit
+03        | MTO_GTIN                          | GTIN of a made-to-order trade item
+10        | BATCH_LOT                         | Batch or lot number
+11        | PRODUCTION_DATE                   | Production date (YYMMDD)
+12        | DUE_DATE                          | Due date for amount on payment slip (YYMMDD)
+13        | PACKAGING_DATE                    | Packaging date (YYMMDD)
+15        | BEST_BEFORE_DATE                  | Best before date (YYMMDD)
+16        | SELL_BY_DATE                      | Sell by date (YYMMDD)
+17        | EXPIRY_DATE                       | Expiration date (YYMMDD)
+20        | VARIANT                           | Internal product variant
+21        | SERIAL                            | Serial number
+22        | CPV                               | Consumer product variant
+235       | TPX                               | Third party controlled, serialised extension of GTIN
+240       | ADDITIONAL_ID                     | Additional product identification assigned by the manufacturer
+241       | CUSTOMER_PART_NUMBER              | Customer part number
+242       | MTO_VARIANT                       | Made-to-order variation number
+243       | PCN                               | Packaging component number
+250       | SECONDARY_SERIAL                  | Secondary serial number
+251       | REFERENCE_TO_SOURCE               | Reference to source entity
+253       | GDTI                              | Global Document Type Identifier
+254       | GLN_EXTENSION                     | GLN extension component
+255       | GCN                               | Global Coupon Number
+30        | VARIABLE_COUNT                    | Variable count of items
+3100-3105 | netWeightKg(decimals)             | Net weight in kilograms
+3110-3115 | lengthM(decimals)                 | Length or first dimension in metres
+3120-3125 | widthM(decimals)                  | Width, diameter or second dimension in metres
+3130-3135 | heightM(decimals)                 | Depth, thickness, height or third dimension in metres
+3140-3145 | areaM2(decimals)                  | Area in square metres
+3150-3155 | netVolumeL(decimals)              | Net volume in litres
+3160-3165 | netVolumeM3(decimals)             | Net volume in cubic metres
+3200-3205 | netWeightLb(decimals)             | Net weight in pounds
+3210-3215 | lengthIn(decimals)                | Length or first dimension in inches
+3220-3225 | lengthFt(decimals)                | Length or first dimension in feet
+3230-3235 | lengthYd(decimals)                | Length or first dimension in yards
+3240-3245 | widthIn(decimals)                 | Width, diameter or second dimension in inches
+3250-3255 | widthFt(decimals)                 | Width, diameter or second dimension in feet
+3260-3265 | widthYd(decimals)                 | Width, diameter or second dimension in yards
+3270-3275 | heightIn(decimals)                | Depth, thickness, height or third dimension in inches
+3280-3285 | heightFt(decimals)                | Depth, thickness, height or third dimension in feet
+3290-3295 | heightYd(decimals)                | Depth, thickness, height or third dimension in yards
+3300-3305 | grossWeightKg(decimals)           | Logistic (gross) weight in kilograms
+3310-3315 | logisticLengthM(decimals)         | Logistic length or first dimension in metres
+3320-3325 | logisticWidthM(decimals)          | Logistic width, diameter or second dimension in metres
+3330-3335 | logisticHeightM(decimals)         | Logistic depth, thickness, height or third dimension in metres
+3340-3345 | logisticAreaM2(decimals)          | Logistic area in square metres
+3350-3355 | logisticVolumeL(decimals)         | Logistic volume in litres
+3360-3365 | logisticVolumeM3(decimals)        | Logistic volume in cubic metres
+3370-3375 | kilogramsPerSquareMetre(decimals) | Kilograms per square metre
+3400-3405 | grossWeightLb(decimals)           | Logistic (gross) weight in pounds
+3410-3415 | logisticLengthIn(decimals)        | Logistic length or first dimension in inches
+3420-3425 | logisticLengthFt(decimals)        | Logistic length or first dimension in feet
+3430-3435 | logisticLengthYd(decimals)        | Logistic length or first dimension in yards
+3440-3445 | logisticWidthIn(decimals)         | Logistic width, diameter or second dimension in inches
+3450-3455 | logisticWidthFt(decimals)         | Logistic width, diameter or second dimension in feet
+3460-3465 | logisticWidthYd(decimals)         | Logistic width, diameter or second dimension in yards
+3470-3475 | logisticHeightIn(decimals)        | Logistic depth, thickness, height or third dimension in inches
+3480-3485 | logisticHeightFt(decimals)        | Logistic depth, thickness, height or third dimension in feet
+3490-3495 | logisticHeightYd(decimals)        | Logistic depth, thickness, height or third dimension in yards
+3500-3505 | areaIn2(decimals)                 | Area in square inches
+3510-3515 | areaFt2(decimals)                 | Area in square feet
+3520-3525 | areaYd2(decimals)                 | Area in square yards
+3530-3535 | logisticAreaIn2(decimals)         | Logistic area in square inches
+3540-3545 | logisticAreaFt2(decimals)         | Logistic area in square feet
+3550-3555 | logisticAreaYd2(decimals)         | Logistic area in square yards
+3560-3565 | netWeightTroyOz(decimals)         | Net weight in troy ounces
+3570-3575 | netVolumeOz(decimals)             | Net weight or volume in ounces
+3600-3605 | netVolumeQt(decimals)             | Net volume in US quarts
+3610-3615 | netVolumeGal(decimals)            | Net volume in US gallons
+3620-3625 | logisticVolumeQt(decimals)        | Logistic volume in US quarts
+3630-3635 | logisticVolumeGal(decimals)       | Logistic volume in US gallons
+3640-3645 | netVolumeIn3(decimals)            | Net volume in cubic inches
+3650-3655 | netVolumeFt3(decimals)            | Net volume in cubic feet
+3660-3665 | netVolumeYd3(decimals)            | Net volume in cubic yards
+3670-3675 | logisticVolumeIn3(decimals)       | Logistic volume in cubic inches
+3680-3685 | logisticVolumeFt3(decimals)       | Logistic volume in cubic feet
+3690-3695 | logisticVolumeYd3(decimals)       | Logistic volume in cubic yards
+37        | COUNT                             | Count of trade items or trade item pieces contained in a logistic unit
+3900-3909 | amountPayable(decimals)           | Amount payable or coupon value in local currency
+3910-3919 | amountPayableWithCurrency(decimals) | Amount payable or coupon value with ISO 4217 currency code
+3920-3929 | price(decimals)                   | Amount payable for a variable measure trade item, local currency
+3930-3939 | priceWithCurrency(decimals)       | Amount payable for a variable measure trade item, with ISO 4217 currency code
+3940-3943 | percentageDiscount(decimals)      | Percentage discount of a coupon
+3950-3955 | pricePerUnitOfMeasure(decimals)   | Amount payable per unit of measure of a variable measure trade item
+400       | ORDER_NUMBER                      | Customer's purchase order number
+401       | GINC                              | Global Identification Number for Consignment
+402       | GSIN                              | Global Shipment Identification Number
+403       | ROUTE                             | Routing code
+410       | SHIP_TO_GLN                       | Ship to / deliver to Global Location Number
+411       | BILL_TO_GLN                       | Bill to / invoice to Global Location Number
+412       | PURCHASED_FROM_GLN                | Purchased from Global Location Number
+413       | SHIP_FOR_GLN                      | Ship for / deliver for / forward to Global Location Number
+414       | LOCATION_GLN                      | Global Location Number of a physical location
+415       | PAY_TO_GLN                        | Global Location Number of the invoicing party
+416       | PRODUCTION_LOCATION_GLN           | Global Location Number of the production or service location
+417       | PARTY_GLN                         | Party Global Location Number
+420       | SHIP_TO_POSTAL_CODE               | Ship to / deliver to postal code within a single postal authority
+421       | SHIP_TO_POSTAL_CODE_WITH_COUNTRY  | Ship to / deliver to postal code with ISO 3166 country code
+422       | ORIGIN_COUNTRY                    | Country of origin of a trade item (ISO 3166 numeric)
+423       | INITIAL_PROCESSING_COUNTRY        | Country or countries of initial processing
+424       | PROCESSING_COUNTRY                | Country of processing
+425       | DISASSEMBLY_COUNTRY               | Country or countries of disassembly
+426       | FULL_PROCESS_COUNTRY              | Country covering the full process chain
+427       | ORIGIN_SUBDIVISION                | Country subdivision of origin (ISO 3166-2)
+4300      | SHIP_TO_COMPANY                   | Ship-to / deliver-to company name
+4301      | SHIP_TO_CONTACT                   | Ship-to / deliver-to contact
+4302      | SHIP_TO_ADDRESS_LINE_1            | Ship-to / deliver-to address line 1
+4303      | SHIP_TO_ADDRESS_LINE_2            | Ship-to / deliver-to address line 2
+4304      | SHIP_TO_SUBURB                    | Ship-to / deliver-to suburb
+4305      | SHIP_TO_LOCALITY                  | Ship-to / deliver-to locality
+4306      | SHIP_TO_REGION                    | Ship-to / deliver-to region
+4307      | SHIP_TO_COUNTRY_CODE              | Ship-to / deliver-to country code (ISO 3166 alpha-2)
+4308      | SHIP_TO_PHONE                     | Ship-to / deliver-to telephone number
+4309      | SHIP_TO_GEOCODE                   | Ship-to / deliver-to GEO location
+4310      | RETURN_TO_COMPANY                 | Return-to company name
+4311      | RETURN_TO_CONTACT                 | Return-to contact
+4312      | RETURN_TO_ADDRESS_LINE_1          | Return-to address line 1
+4313      | RETURN_TO_ADDRESS_LINE_2          | Return-to address line 2
+4314      | RETURN_TO_SUBURB                  | Return-to suburb
+4315      | RETURN_TO_LOCALITY                | Return-to locality
+4316      | RETURN_TO_REGION                  | Return-to region
+4317      | RETURN_TO_COUNTRY_CODE            | Return-to country code (ISO 3166 alpha-2)
+4318      | RETURN_TO_POSTAL_CODE             | Return-to postal code
+4319      | RETURN_TO_PHONE                   | Return-to telephone number
+4320      | SERVICE_CODE_DESCRIPTION          | Service code description
+4321      | DANGEROUS_GOODS                   | Dangerous goods flag (0 or 1)
+4322      | AUTHORITY_TO_LEAVE                | Authority to leave flag (0 or 1)
+4323      | SIGNATURE_REQUIRED                | Signature required flag (0 or 1)
+4324      | NOT_BEFORE_DELIVERY_DATE_TIME     | Not before delivery date and time (YYMMDDHHMM)
+4325      | NOT_AFTER_DELIVERY_DATE_TIME      | Not after delivery date and time (YYMMDDHHMM)
+4326      | RELEASE_DATE                      | Release date (YYMMDD)
+4330      | MAX_TEMPERATURE_F                 | Maximum temperature in Fahrenheit
+4331      | MAX_TEMPERATURE_C                 | Maximum temperature in Celsius
+4332      | MIN_TEMPERATURE_F                 | Minimum temperature in Fahrenheit
+4333      | MIN_TEMPERATURE_C                 | Minimum temperature in Celsius
+7001      | NSN                               | NATO Stock Number
+7002      | MEAT_CUT                          | UNECE meat carcasses and cuts classification
+7003      | EXPIRY_DATE_TIME                  | Expiration date and time (YYMMDDHHMM)
+7004      | ACTIVE_POTENCY                    | Active potency
+7005      | CATCH_AREA                        | Catch area
+7006      | FIRST_FREEZE_DATE                 | First freeze date (YYMMDD)
+7007      | HARVEST_DATE                      | Harvest date or date range (YYMMDD[YYMMDD])
+7008      | AQUATIC_SPECIES                   | Species for fishery purposes
+7009      | FISHING_GEAR_TYPE                 | Fishing gear type
+7010      | PRODUCTION_METHOD                 | Production method
+7011      | TEST_BY_DATE                      | Test by date (YYMMDD[HHMM])
+7020      | REFURBISHMENT_LOT                 | Refurbishment lot ID
+7021      | FUNCTIONAL_STATUS                 | Functional status
+7022      | REVISION_STATUS                   | Revision status
+7023      | GIAI_ASSEMBLY                     | Global Individual Asset Identifier of an assembly
+7030-7039 | processorApproval(index)          | Number of processor with three-digit ISO country code (index 0-9)
+7040      | UIC_EXTENSION                     | GS1 UIC with extension 1 and importer index
+7041      | FREIGHT_UNIT_TYPE                 | UN/CEFACT freight unit type
+710       | NHRN_PZN                          | National Healthcare Reimbursement Number, Germany (PZN)
+711       | NHRN_CIP                          | National Healthcare Reimbursement Number, France (CIP)
+712       | NHRN_CN                           | National Healthcare Reimbursement Number, Spain (Código Nacional)
+713       | NHRN_DRN                          | National Healthcare Reimbursement Number, Brazil (DRN)
+714       | NHRN_AIM                          | National Healthcare Reimbursement Number, Portugal (AIM)
+715       | NHRN_NDC                          | National Healthcare Reimbursement Number, United States (NDC)
+716       | NHRN_AIC                          | National Healthcare Reimbursement Number, Italy (AIC)
+717       | NHRN_SRN                          | National Healthcare Reimbursement Number (SRN)
+7230-7239 | certification(number=1)           | Certification reference (number 1-10)
+7240      | PROTOCOL_ID                       | Protocol ID
+7241      | AIDC_MEDIA_TYPE                   | AIDC media type
+7242      | VCN                               | Version Control Number
+7250      | DATE_OF_BIRTH                     | Date of birth (YYYYMMDD)
+7251      | DATE_AND_TIME_OF_BIRTH            | Date and time of birth (YYYYMMDDHHMM)
+7252      | BIOLOGICAL_SEX                    | Biological sex (ISO 5218)
+7253      | FAMILY_NAME                       | Family name of a person
+7254      | GIVEN_NAME                        | Given name of a person
+7255      | NAME_SUFFIX                       | Name suffix of a person
+7256      | FULL_NAME                         | Full name of a person
+7257      | PERSON_ADDRESS                    | Address of a person
+7258      | BIRTH_SEQUENCE                    | Baby birth sequence indicator (e.g. 1/2)
+7259      | BABY_OF_FAMILY_NAME               | Baby of family name
+8001      | ROLL_DIMENSIONS                   | Roll products: width, length, core diameter, direction and splices
+8002      | CMT_NUMBER                        | Cellular mobile telephone identifier
+8003      | GRAI                              | Global Returnable Asset Identifier
+8004      | GIAI                              | Global Individual Asset Identifier
+8005      | PRICE_PER_UNIT                    | Price per unit of measure
+8006      | ITIP                              | Identification of an individual trade item piece
+8007      | IBAN                              | International Bank Account Number
+8008      | PRODUCTION_DATE_TIME              | Date and time of production (YYMMDDHH[MM[SS]])
+8009      | OPTSEN                            | Optically readable sensor indicator
+8010      | CPID                              | Component / part identifier
+8011      | CPID_SERIAL                       | Component / part identifier serial number
+8012      | SOFTWARE_VERSION                  | Software version
+8013      | GMN                               | Global Model Number
+8014      | MUDI                              | Master UDI-DI
+8017      | GSRN_PROVIDER                     | Global Service Relation Number, provider
+8018      | GSRN_RECIPIENT                    | Global Service Relation Number, recipient
+8019      | SRIN                              | Service Relation Instance Number
+8020      | PAYMENT_SLIP_REFERENCE            | Payment slip reference number
+8026      | ITIP_CONTENT                      | Identification of pieces of a trade item contained in a logistic unit
+8030      | DIGITAL_SIGNATURE                 | Digital signature
+8040      | IMEI                              | International Mobile Equipment Identity
+8041      | IMEI_2                            | Second International Mobile Equipment Identity
+8042      | ESIM                              | Embedded SIM identifier
+8043      | PSIM                              | Physical SIM identifier
+8110      | COUPON_CODE_NORTH_AMERICA         | Coupon code identification for use in North America
+8111      | LOYALTY_POINTS                    | Loyalty points of a coupon
+8112      | PAPERLESS_COUPON_CODE_NORTH_AMERICA | Paperless coupon code identification for use in North America
+8200      | PRODUCT_URL                       | Extended packaging URL
+90        | INTERNAL                          | Information mutually agreed between trading partners
+91-99     | companyInternal(number=1)         | Company internal information (number 1-9 for AIs 91-99)

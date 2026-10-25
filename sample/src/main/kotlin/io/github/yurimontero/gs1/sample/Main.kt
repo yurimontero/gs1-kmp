@@ -32,15 +32,19 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import io.github.yurimontero.gs1.Gs1DigitalLink
 import io.github.yurimontero.gs1.Gs1Exception
 import io.github.yurimontero.gs1.Gs1Message
 import io.github.yurimontero.gs1.code128.Code128Symbol
 import io.github.yurimontero.gs1.code128.Gs1Code128
 import io.github.yurimontero.gs1.compose.Gs1Code128Barcode
 import io.github.yurimontero.gs1.compose.Gs1DataMatrixBarcode
+import io.github.yurimontero.gs1.compose.Gs1QrCodeBarcode
 import io.github.yurimontero.gs1.datamatrix.DataMatrixShape
 import io.github.yurimontero.gs1.datamatrix.DataMatrixSymbol
 import io.github.yurimontero.gs1.datamatrix.Gs1DataMatrix
+import io.github.yurimontero.gs1.qrcode.Gs1QrCode
+import io.github.yurimontero.gs1.qrcode.QrCodeSymbol
 import io.github.yurimontero.gs1.render.toSvg
 import java.io.File
 
@@ -65,18 +69,23 @@ private val label = TextStyle(color = Muted, fontSize = 12.sp, fontWeight = Font
 private val mono = TextStyle(color = Ink, fontSize = 14.sp, fontFamily = FontFamily.Monospace)
 
 private const val EXAMPLE = "(01)09501101020917(17)261231(10)ABC123(21)SN-001"
+private const val DOMAIN = "https://example.com"
 
 private class Result(
     val message: Gs1Message? = null,
     val dataMatrix: DataMatrixSymbol? = null,
     val code128: Code128Symbol? = null,
     val code128Error: String? = null,
+    val qrCode: QrCodeSymbol? = null,
+    val qrCodeError: String? = null,
     val error: String? = null,
 )
 
-private fun encode(text: String, shape: DataMatrixShape): Result {
+/** Accepts bracketed AI syntax or a GS1 Digital Link URI. */
+private fun encode(text: String, shape: DataMatrixShape, domain: String): Result {
+    val input = text.trim()
     val message = try {
-        Gs1Message.parse(text.trim())
+        if (input.startsWith("http", ignoreCase = true)) Gs1DigitalLink.parse(input) else Gs1Message.parse(input)
     } catch (e: Gs1Exception) {
         return Result(error = e.message)
     }
@@ -85,19 +94,32 @@ private fun encode(text: String, shape: DataMatrixShape): Result {
     } catch (e: Gs1Exception) {
         return Result(message = message, error = e.message)
     }
-    return try {
-        Result(message, dataMatrix, Gs1Code128.encode(message))
+    var code128: Code128Symbol? = null
+    var code128Error: String? = null
+    try {
+        code128 = Gs1Code128.encode(message)
     } catch (e: Gs1Exception) {
-        Result(message, dataMatrix, code128Error = e.message)
+        code128Error = e.message
     }
+    var qrCode: QrCodeSymbol? = null
+    var qrCodeError: String? = null
+    try {
+        qrCode = Gs1QrCode.encode(message, domain.trim())
+    } catch (e: Gs1Exception) {
+        qrCodeError = e.message
+    } catch (e: IllegalArgumentException) {
+        qrCodeError = e.message
+    }
+    return Result(message, dataMatrix, code128, code128Error, qrCode, qrCodeError)
 }
 
 @Composable
 private fun App() {
     var input by remember { mutableStateOf(EXAMPLE) }
     var shape by remember { mutableStateOf(DataMatrixShape.SQUARE) }
+    var domain by remember { mutableStateOf(DOMAIN) }
     var status by remember { mutableStateOf<String?>(null) }
-    val result = remember(input, shape) { encode(input, shape) }
+    val result = remember(input, shape, domain) { encode(input, shape, domain) }
 
     Column(
         modifier = Modifier.fillMaxSize().background(Color.White).verticalScroll(rememberScrollState()).padding(24.dp),
@@ -105,7 +127,7 @@ private fun App() {
     ) {
         BasicText("GS1 barcode generator", style = TextStyle(color = Ink, fontSize = 22.sp, fontWeight = FontWeight.SemiBold))
 
-        Section("GS1 data (bracketed AI syntax)") {
+        Section("GS1 data (bracketed AI syntax or GS1 Digital Link URI)") {
             BasicTextField(
                 value = input,
                 onValueChange = { input = it; status = null },
@@ -137,6 +159,26 @@ private fun App() {
         }
 
         if (result.message != null) {
+            Section("GS1 Digital Link QR Code") {
+                BasicTextField(
+                    value = domain,
+                    onValueChange = { domain = it; status = null },
+                    textStyle = mono,
+                    singleLine = true,
+                    modifier = Modifier.fillMaxWidth()
+                        .border(1.dp, if (result.qrCodeError != null) ErrorRed else Muted, RoundedCornerShape(6.dp))
+                        .padding(12.dp),
+                )
+                val qrCode = result.qrCode
+                if (qrCode != null) {
+                    Gs1QrCodeBarcode(qrCode, moduleSize = 6.dp)
+                    BasicText(qrCode.text, style = mono)
+                    BasicText("Version ${qrCode.version}-${qrCode.errorCorrection} · ${qrCode.size}x${qrCode.size} modules", style = label)
+                } else {
+                    BasicText(result.qrCodeError ?: "", style = body.copy(color = ErrorRed))
+                }
+            }
+
             Section("GS1-128") {
                 val code128 = result.code128
                 if (code128 != null) {
@@ -193,5 +235,6 @@ private fun saveSvgs(result: Result): String {
     val saved = mutableListOf<String>()
     result.dataMatrix?.let { File(dir, "datamatrix.svg").writeText(it.toSvg()); saved += "datamatrix.svg" }
     result.code128?.let { File(dir, "gs1-128.svg").writeText(it.toSvg()); saved += "gs1-128.svg" }
+    result.qrCode?.let { File(dir, "qrcode.svg").writeText(it.toSvg()); saved += "qrcode.svg" }
     return if (saved.isEmpty()) "Nothing to save" else "Saved ${saved.joinToString()} in ${dir.absolutePath}"
 }
