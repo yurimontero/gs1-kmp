@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
@@ -10,6 +11,10 @@ plugins {
 
 kotlin {
     explicitApi()
+
+    // Public API dump in api/: `check` fails if the API changes until `./gradlew updateKotlinAbi` is run
+    @OptIn(ExperimentalAbiValidation::class)
+    abiValidation()
 
     // Android
     android {

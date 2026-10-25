@@ -1,5 +1,8 @@
 # gs1-kmp
 
+[![CI](https://github.com/yurimontero/gs1-kmp/actions/workflows/ci.yml/badge.svg)](https://github.com/yurimontero/gs1-kmp/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-yurimontero.github.io%2Fgs1--kmp-blue)](https://yurimontero.github.io/gs1-kmp/)
+
 Kotlin Multiplatform library to generate **GS1-128** (Code 128), **GS1 DataMatrix** and **GS1 Digital Link QR Code** barcodes on-device, with no third-party dependencies.
 
 | Module | Description | Targets |
@@ -79,6 +82,7 @@ Requirements: JDK 17+ and the Android SDK (open the project once in Android Stud
 ./gradlew build          # compile every target and run the tests
 ./gradlew jvmTest        # fast feedback while developing
 ./gradlew allTests       # tests on JVM, JS (Node.js), Wasm (Node.js) and, on macOS, the iOS simulator
+./gradlew updateKotlinAbi  # after an intended public API change: refresh the API dump in */api/
 ```
 
 iOS klibs can be built on Linux; running the iOS tests requires macOS.

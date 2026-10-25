@@ -1,0 +1,591 @@
+public final class io/github/yurimontero/gs1/AiComponent {
+	public final fun getCharacterSet ()Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public final fun getLinters ()Ljava/util/List;
+	public final fun getMaxLength ()I
+	public final fun getMinLength ()I
+	public final fun isFixedLength ()Z
+	public final fun isOptional ()Z
+}
+
+public final class io/github/yurimontero/gs1/ApplicationIdentifier {
+	public static final field Companion Lio/github/yurimontero/gs1/ApplicationIdentifier$Companion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getComponents ()Ljava/util/List;
+	public final fun getDigitalLinkQualifiers ()Ljava/util/List;
+	public final fun getMaxLength ()I
+	public final fun getMinLength ()I
+	public final fun getRequiresSeparator ()Z
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isDigitalLinkAttribute ()Z
+	public final fun isDigitalLinkPrimaryKey ()Z
+	public final fun isPredefinedLength ()Z
+	public fun toString ()Ljava/lang/String;
+	public final fun validate (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1Error;
+}
+
+public final class io/github/yurimontero/gs1/ApplicationIdentifier$Companion {
+	public final fun find (Ljava/lang/String;)Lio/github/yurimontero/gs1/ApplicationIdentifier;
+	public final fun getAll ()Ljava/util/List;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Ai {
+	public static final field ACTIVE_POTENCY Ljava/lang/String;
+	public static final field ADDITIONAL_ID Ljava/lang/String;
+	public static final field AIDC_MEDIA_TYPE Ljava/lang/String;
+	public static final field AQUATIC_SPECIES Ljava/lang/String;
+	public static final field AUTHORITY_TO_LEAVE Ljava/lang/String;
+	public static final field BABY_OF_FAMILY_NAME Ljava/lang/String;
+	public static final field BATCH_LOT Ljava/lang/String;
+	public static final field BEST_BEFORE_DATE Ljava/lang/String;
+	public static final field BILL_TO_GLN Ljava/lang/String;
+	public static final field BIOLOGICAL_SEX Ljava/lang/String;
+	public static final field BIRTH_SEQUENCE Ljava/lang/String;
+	public static final field CATCH_AREA Ljava/lang/String;
+	public static final field CMT_NUMBER Ljava/lang/String;
+	public static final field CONTENT Ljava/lang/String;
+	public static final field COUNT Ljava/lang/String;
+	public static final field COUPON_CODE_NORTH_AMERICA Ljava/lang/String;
+	public static final field CPID Ljava/lang/String;
+	public static final field CPID_SERIAL Ljava/lang/String;
+	public static final field CPV Ljava/lang/String;
+	public static final field CUSTOMER_PART_NUMBER Ljava/lang/String;
+	public static final field DANGEROUS_GOODS Ljava/lang/String;
+	public static final field DATE_AND_TIME_OF_BIRTH Ljava/lang/String;
+	public static final field DATE_OF_BIRTH Ljava/lang/String;
+	public static final field DIGITAL_SIGNATURE Ljava/lang/String;
+	public static final field DISASSEMBLY_COUNTRY Ljava/lang/String;
+	public static final field DUE_DATE Ljava/lang/String;
+	public static final field ESIM Ljava/lang/String;
+	public static final field EXPIRY_DATE Ljava/lang/String;
+	public static final field EXPIRY_DATE_TIME Ljava/lang/String;
+	public static final field FAMILY_NAME Ljava/lang/String;
+	public static final field FIRST_FREEZE_DATE Ljava/lang/String;
+	public static final field FISHING_GEAR_TYPE Ljava/lang/String;
+	public static final field FREIGHT_UNIT_TYPE Ljava/lang/String;
+	public static final field FULL_NAME Ljava/lang/String;
+	public static final field FULL_PROCESS_COUNTRY Ljava/lang/String;
+	public static final field FUNCTIONAL_STATUS Ljava/lang/String;
+	public static final field GCN Ljava/lang/String;
+	public static final field GDTI Ljava/lang/String;
+	public static final field GIAI Ljava/lang/String;
+	public static final field GIAI_ASSEMBLY Ljava/lang/String;
+	public static final field GINC Ljava/lang/String;
+	public static final field GIVEN_NAME Ljava/lang/String;
+	public static final field GLN_EXTENSION Ljava/lang/String;
+	public static final field GMN Ljava/lang/String;
+	public static final field GRAI Ljava/lang/String;
+	public static final field GSIN Ljava/lang/String;
+	public static final field GSRN_PROVIDER Ljava/lang/String;
+	public static final field GSRN_RECIPIENT Ljava/lang/String;
+	public static final field GTIN Ljava/lang/String;
+	public static final field HARVEST_DATE Ljava/lang/String;
+	public static final field IBAN Ljava/lang/String;
+	public static final field IMEI Ljava/lang/String;
+	public static final field IMEI_2 Ljava/lang/String;
+	public static final field INITIAL_PROCESSING_COUNTRY Ljava/lang/String;
+	public static final field INSTANCE Lio/github/yurimontero/gs1/Gs1Ai;
+	public static final field INTERNAL Ljava/lang/String;
+	public static final field ITIP Ljava/lang/String;
+	public static final field ITIP_CONTENT Ljava/lang/String;
+	public static final field LOCATION_GLN Ljava/lang/String;
+	public static final field LOYALTY_POINTS Ljava/lang/String;
+	public static final field MAX_TEMPERATURE_C Ljava/lang/String;
+	public static final field MAX_TEMPERATURE_F Ljava/lang/String;
+	public static final field MEAT_CUT Ljava/lang/String;
+	public static final field MIN_TEMPERATURE_C Ljava/lang/String;
+	public static final field MIN_TEMPERATURE_F Ljava/lang/String;
+	public static final field MTO_GTIN Ljava/lang/String;
+	public static final field MTO_VARIANT Ljava/lang/String;
+	public static final field MUDI Ljava/lang/String;
+	public static final field NAME_SUFFIX Ljava/lang/String;
+	public static final field NHRN_AIC Ljava/lang/String;
+	public static final field NHRN_AIM Ljava/lang/String;
+	public static final field NHRN_CIP Ljava/lang/String;
+	public static final field NHRN_CN Ljava/lang/String;
+	public static final field NHRN_DRN Ljava/lang/String;
+	public static final field NHRN_NDC Ljava/lang/String;
+	public static final field NHRN_PZN Ljava/lang/String;
+	public static final field NHRN_SRN Ljava/lang/String;
+	public static final field NOT_AFTER_DELIVERY_DATE_TIME Ljava/lang/String;
+	public static final field NOT_BEFORE_DELIVERY_DATE_TIME Ljava/lang/String;
+	public static final field NSN Ljava/lang/String;
+	public static final field OPTSEN Ljava/lang/String;
+	public static final field ORDER_NUMBER Ljava/lang/String;
+	public static final field ORIGIN_COUNTRY Ljava/lang/String;
+	public static final field ORIGIN_SUBDIVISION Ljava/lang/String;
+	public static final field PACKAGING_DATE Ljava/lang/String;
+	public static final field PAPERLESS_COUPON_CODE_NORTH_AMERICA Ljava/lang/String;
+	public static final field PARTY_GLN Ljava/lang/String;
+	public static final field PAYMENT_SLIP_REFERENCE Ljava/lang/String;
+	public static final field PAY_TO_GLN Ljava/lang/String;
+	public static final field PCN Ljava/lang/String;
+	public static final field PERSON_ADDRESS Ljava/lang/String;
+	public static final field PRICE_PER_UNIT Ljava/lang/String;
+	public static final field PROCESSING_COUNTRY Ljava/lang/String;
+	public static final field PRODUCTION_DATE Ljava/lang/String;
+	public static final field PRODUCTION_DATE_TIME Ljava/lang/String;
+	public static final field PRODUCTION_LOCATION_GLN Ljava/lang/String;
+	public static final field PRODUCTION_METHOD Ljava/lang/String;
+	public static final field PRODUCT_URL Ljava/lang/String;
+	public static final field PROTOCOL_ID Ljava/lang/String;
+	public static final field PSIM Ljava/lang/String;
+	public static final field PURCHASED_FROM_GLN Ljava/lang/String;
+	public static final field REFERENCE_TO_SOURCE Ljava/lang/String;
+	public static final field REFURBISHMENT_LOT Ljava/lang/String;
+	public static final field RELEASE_DATE Ljava/lang/String;
+	public static final field RETURN_TO_ADDRESS_LINE_1 Ljava/lang/String;
+	public static final field RETURN_TO_ADDRESS_LINE_2 Ljava/lang/String;
+	public static final field RETURN_TO_COMPANY Ljava/lang/String;
+	public static final field RETURN_TO_CONTACT Ljava/lang/String;
+	public static final field RETURN_TO_COUNTRY_CODE Ljava/lang/String;
+	public static final field RETURN_TO_LOCALITY Ljava/lang/String;
+	public static final field RETURN_TO_PHONE Ljava/lang/String;
+	public static final field RETURN_TO_POSTAL_CODE Ljava/lang/String;
+	public static final field RETURN_TO_REGION Ljava/lang/String;
+	public static final field RETURN_TO_SUBURB Ljava/lang/String;
+	public static final field REVISION_STATUS Ljava/lang/String;
+	public static final field ROLL_DIMENSIONS Ljava/lang/String;
+	public static final field ROUTE Ljava/lang/String;
+	public static final field SECONDARY_SERIAL Ljava/lang/String;
+	public static final field SELL_BY_DATE Ljava/lang/String;
+	public static final field SERIAL Ljava/lang/String;
+	public static final field SERVICE_CODE_DESCRIPTION Ljava/lang/String;
+	public static final field SHIP_FOR_GLN Ljava/lang/String;
+	public static final field SHIP_TO_ADDRESS_LINE_1 Ljava/lang/String;
+	public static final field SHIP_TO_ADDRESS_LINE_2 Ljava/lang/String;
+	public static final field SHIP_TO_COMPANY Ljava/lang/String;
+	public static final field SHIP_TO_CONTACT Ljava/lang/String;
+	public static final field SHIP_TO_COUNTRY_CODE Ljava/lang/String;
+	public static final field SHIP_TO_GEOCODE Ljava/lang/String;
+	public static final field SHIP_TO_GLN Ljava/lang/String;
+	public static final field SHIP_TO_LOCALITY Ljava/lang/String;
+	public static final field SHIP_TO_PHONE Ljava/lang/String;
+	public static final field SHIP_TO_POSTAL_CODE Ljava/lang/String;
+	public static final field SHIP_TO_POSTAL_CODE_WITH_COUNTRY Ljava/lang/String;
+	public static final field SHIP_TO_REGION Ljava/lang/String;
+	public static final field SHIP_TO_SUBURB Ljava/lang/String;
+	public static final field SIGNATURE_REQUIRED Ljava/lang/String;
+	public static final field SOFTWARE_VERSION Ljava/lang/String;
+	public static final field SRIN Ljava/lang/String;
+	public static final field SSCC Ljava/lang/String;
+	public static final field TEST_BY_DATE Ljava/lang/String;
+	public static final field TPX Ljava/lang/String;
+	public static final field UIC_EXTENSION Ljava/lang/String;
+	public static final field VARIABLE_COUNT Ljava/lang/String;
+	public static final field VARIANT Ljava/lang/String;
+	public static final field VCN Ljava/lang/String;
+	public final fun amountPayable (I)Ljava/lang/String;
+	public final fun amountPayableWithCurrency (I)Ljava/lang/String;
+	public final fun areaFt2 (I)Ljava/lang/String;
+	public final fun areaIn2 (I)Ljava/lang/String;
+	public final fun areaM2 (I)Ljava/lang/String;
+	public final fun areaYd2 (I)Ljava/lang/String;
+	public final fun certification (I)Ljava/lang/String;
+	public final fun companyInternal (I)Ljava/lang/String;
+	public final fun grossWeightKg (I)Ljava/lang/String;
+	public final fun grossWeightLb (I)Ljava/lang/String;
+	public final fun heightFt (I)Ljava/lang/String;
+	public final fun heightIn (I)Ljava/lang/String;
+	public final fun heightM (I)Ljava/lang/String;
+	public final fun heightYd (I)Ljava/lang/String;
+	public final fun kilogramsPerSquareMetre (I)Ljava/lang/String;
+	public final fun lengthFt (I)Ljava/lang/String;
+	public final fun lengthIn (I)Ljava/lang/String;
+	public final fun lengthM (I)Ljava/lang/String;
+	public final fun lengthYd (I)Ljava/lang/String;
+	public final fun logisticAreaFt2 (I)Ljava/lang/String;
+	public final fun logisticAreaIn2 (I)Ljava/lang/String;
+	public final fun logisticAreaM2 (I)Ljava/lang/String;
+	public final fun logisticAreaYd2 (I)Ljava/lang/String;
+	public final fun logisticHeightFt (I)Ljava/lang/String;
+	public final fun logisticHeightIn (I)Ljava/lang/String;
+	public final fun logisticHeightM (I)Ljava/lang/String;
+	public final fun logisticHeightYd (I)Ljava/lang/String;
+	public final fun logisticLengthFt (I)Ljava/lang/String;
+	public final fun logisticLengthIn (I)Ljava/lang/String;
+	public final fun logisticLengthM (I)Ljava/lang/String;
+	public final fun logisticLengthYd (I)Ljava/lang/String;
+	public final fun logisticVolumeFt3 (I)Ljava/lang/String;
+	public final fun logisticVolumeGal (I)Ljava/lang/String;
+	public final fun logisticVolumeIn3 (I)Ljava/lang/String;
+	public final fun logisticVolumeL (I)Ljava/lang/String;
+	public final fun logisticVolumeM3 (I)Ljava/lang/String;
+	public final fun logisticVolumeQt (I)Ljava/lang/String;
+	public final fun logisticVolumeYd3 (I)Ljava/lang/String;
+	public final fun logisticWidthFt (I)Ljava/lang/String;
+	public final fun logisticWidthIn (I)Ljava/lang/String;
+	public final fun logisticWidthM (I)Ljava/lang/String;
+	public final fun logisticWidthYd (I)Ljava/lang/String;
+	public final fun netVolumeFt3 (I)Ljava/lang/String;
+	public final fun netVolumeGal (I)Ljava/lang/String;
+	public final fun netVolumeIn3 (I)Ljava/lang/String;
+	public final fun netVolumeL (I)Ljava/lang/String;
+	public final fun netVolumeM3 (I)Ljava/lang/String;
+	public final fun netVolumeOz (I)Ljava/lang/String;
+	public final fun netVolumeQt (I)Ljava/lang/String;
+	public final fun netVolumeYd3 (I)Ljava/lang/String;
+	public final fun netWeightKg (I)Ljava/lang/String;
+	public final fun netWeightLb (I)Ljava/lang/String;
+	public final fun netWeightTroyOz (I)Ljava/lang/String;
+	public final fun percentageDiscount (I)Ljava/lang/String;
+	public final fun price (I)Ljava/lang/String;
+	public final fun pricePerUnitOfMeasure (I)Ljava/lang/String;
+	public final fun priceWithCurrency (I)Ljava/lang/String;
+	public final fun processorApproval (I)Ljava/lang/String;
+	public final fun widthFt (I)Ljava/lang/String;
+	public final fun widthIn (I)Ljava/lang/String;
+	public final fun widthM (I)Ljava/lang/String;
+	public final fun widthYd (I)Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1CharacterSet : java/lang/Enum {
+	public static final field CSET39 Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public static final field CSET64 Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public static final field CSET82 Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public static final field NUMERIC Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1CharacterSet;
+	public static fun values ()[Lio/github/yurimontero/gs1/Gs1CharacterSet;
+}
+
+public final class io/github/yurimontero/gs1/Gs1CheckDigit {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/Gs1CheckDigit;
+	public final fun append (Ljava/lang/String;)Ljava/lang/String;
+	public final fun compute (Ljava/lang/String;)I
+	public final fun isValid (Ljava/lang/String;)Z
+}
+
+public final class io/github/yurimontero/gs1/Gs1DigitalLink {
+	public static final field CANONICAL_DOMAIN Ljava/lang/String;
+	public static final field INSTANCE Lio/github/yurimontero/gs1/Gs1DigitalLink;
+	public final fun parse (Ljava/lang/String;Z)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun parse$default (Lio/github/yurimontero/gs1/Gs1DigitalLink;Ljava/lang/String;ZILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+	public final fun toUri (Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun toUri$default (Lio/github/yurimontero/gs1/Gs1DigitalLink;Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1DigitalLinkKt {
+	public static final fun toDigitalLinkUri (Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun toDigitalLinkUri$default (Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Element {
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAi ()Lio/github/yurimontero/gs1/ApplicationIdentifier;
+	public final fun getHumanReadable ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Error {
+	public final fun getAi ()Ljava/lang/String;
+	public final fun getCode ()Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public final fun getLength ()I
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getPosition ()I
+	public final fun getValue ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1ErrorCode : java/lang/Enum {
+	public static final field DATA_MATRIX_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DATE_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DATE_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DIGITAL_LINK_AI_SHOULD_BE_IN_PATH Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DIGITAL_LINK_INVALID_ATTRIBUTE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DIGITAL_LINK_INVALID_QUALIFIERS Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DIGITAL_LINK_MALFORMED_URI Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DIGITAL_LINK_NO_PRIMARY_KEY Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field DUPLICATE_AI Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field EMPTY_MESSAGE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field EMPTY_VALUE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field GS1_128_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field HOUR_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field HOUR_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field HOUR_WITH_MINUTE_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field HOUR_WITH_MINUTE_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field IBAN_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field IBAN_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_DAY Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_HOUR Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_IBAN_COUNTRY_CODE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_MINUTE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_MONTH Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_SECOND Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_ZERO_PREFIX Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ILLEGAL_ZERO_VALUE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field IMPORTER_IDX_MUST_BE_ONE_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INCORRECT_CHECK_DIGIT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INCORRECT_CHECK_PAIR Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INCORRECT_IBAN_CHECKSUM Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_BIOLOGICAL_SEX_CODE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_COMPONENT_LENGTH Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_CSET39_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_CSET64_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_CSET64_PADDING Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_CSET82_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_IBAN_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_IMPORT_IDX_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_LATITUDE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_LENGTH_FOR_PIECE_OF_TOTAL Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_LONGITUDE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_MEDIA_TYPE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_PACKAGE_TYPE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_PERCENT_SEQUENCE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field INVALID_WINDING_DIRECTION Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field LATITUDE_INVALID_LENGTH Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field LONGITUDE_INVALID_LENGTH Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field MALFORMED_INPUT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field MINUTE_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field MINUTE_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NON_DIGIT_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_GS1_SYMBOLOGY Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_HYPHEN Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ISO3166 Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ISO3166_ALPHA2 Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ISO3166_OR_999 Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ISO4217 Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ZERO Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field NOT_ZERO_OR_ONE Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field PIECE_NUMBER_EXCEEDS_TOTAL Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field POSITION_EXCEEDS_END Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field POSITION_IN_SEQUENCE_MALFORMED Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field QR_CODE_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field REQUIRES_NON_DIGIT_CHARACTER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field SECOND_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field SECOND_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field TOO_LONG_FOR_CHECK_PAIR_IMPLEMENTATION Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field TOO_SHORT_FOR_CHECK_DIGIT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field TOO_SHORT_FOR_CHECK_PAIR Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field UNKNOWN_AI Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field VALUE_TOO_LONG Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field VALUE_TOO_SHORT Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ZERO_PIECE_NUMBER Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static final field ZERO_TOTAL_PIECES Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public final fun getDescription ()Ljava/lang/String;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1ErrorCode;
+	public static fun values ()[Lio/github/yurimontero/gs1/Gs1ErrorCode;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Exception : java/lang/IllegalArgumentException {
+	public fun <init> (Lio/github/yurimontero/gs1/Gs1Error;)V
+	public final fun getError ()Lio/github/yurimontero/gs1/Gs1Error;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Message {
+	public static final field Companion Lio/github/yurimontero/gs1/Gs1Message$Companion;
+	public static final field GROUP_SEPARATOR C
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun get (Ljava/lang/String;)Ljava/lang/String;
+	public final fun getElements ()Ljava/util/List;
+	public final fun getHumanReadable ()Ljava/lang/String;
+	public final fun getTokens ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun toElementString (CLjava/lang/String;)Ljava/lang/String;
+	public static synthetic fun toElementString$default (Lio/github/yurimontero/gs1/Gs1Message;CLjava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Message$Companion {
+	public final fun of (Ljava/util/List;Lio/github/yurimontero/gs1/Gs1Order;)Lio/github/yurimontero/gs1/Gs1Message;
+	public final fun of ([Lkotlin/Pair;Lio/github/yurimontero/gs1/Gs1Order;)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun of$default (Lio/github/yurimontero/gs1/Gs1Message$Companion;Ljava/util/List;Lio/github/yurimontero/gs1/Gs1Order;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun of$default (Lio/github/yurimontero/gs1/Gs1Message$Companion;[Lkotlin/Pair;Lio/github/yurimontero/gs1/Gs1Order;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+	public final fun parse (Ljava/lang/String;Lio/github/yurimontero/gs1/Gs1Order;)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun parse$default (Lio/github/yurimontero/gs1/Gs1Message$Companion;Ljava/lang/String;Lio/github/yurimontero/gs1/Gs1Order;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+	public final fun parseElementString (Ljava/lang/String;C)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun parseElementString$default (Lio/github/yurimontero/gs1/Gs1Message$Companion;Ljava/lang/String;CILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+}
+
+public final class io/github/yurimontero/gs1/Gs1MessageBuilder {
+	public final fun add (Ljava/lang/String;Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun amountPayable (Ljava/lang/String;Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public static synthetic fun amountPayable$default (Lio/github/yurimontero/gs1/Gs1MessageBuilder;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun batch (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun bestBeforeDate (III)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun content (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun count (I)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun expiryDate (III)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun expiryDateTime (IIIII)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun grossWeightKg (DI)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun grossWeightKg (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun gtin (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun heightM (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun lengthM (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun locationGln (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun netVolumeL (DI)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun netVolumeL (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun netWeightKg (DI)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun netWeightKg (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun orderNumber (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun originCountry (I)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun packagingDate (III)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun price (Ljava/lang/String;Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public static synthetic fun price$default (Lio/github/yurimontero/gs1/Gs1MessageBuilder;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun productionDate (III)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun sellByDate (III)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun serial (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun shipToGln (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun sscc (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun variableCount (I)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+	public final fun widthM (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1MessageBuilder;
+}
+
+public final class io/github/yurimontero/gs1/Gs1MessageBuilderKt {
+	public static final fun build (Lio/github/yurimontero/gs1/Gs1Message$Companion;Lio/github/yurimontero/gs1/Gs1Order;Lkotlin/jvm/functions/Function1;)Lio/github/yurimontero/gs1/Gs1Message;
+	public static synthetic fun build$default (Lio/github/yurimontero/gs1/Gs1Message$Companion;Lio/github/yurimontero/gs1/Gs1Order;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/github/yurimontero/gs1/Gs1Message;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Order : java/lang/Enum {
+	public static final field AS_GIVEN Lio/github/yurimontero/gs1/Gs1Order;
+	public static final field OPTIMIZED Lio/github/yurimontero/gs1/Gs1Order;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/yurimontero/gs1/Gs1Order;
+	public static fun values ()[Lio/github/yurimontero/gs1/Gs1Order;
+}
+
+public abstract interface class io/github/yurimontero/gs1/Gs1Token {
+}
+
+public final class io/github/yurimontero/gs1/Gs1Token$Data : io/github/yurimontero/gs1/Gs1Token {
+	public fun <init> (Ljava/lang/String;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/Gs1Token$Fnc1 : io/github/yurimontero/gs1/Gs1Token {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/Gs1Token$Fnc1;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/code128/Code128Symbol {
+	public final fun getDataCharacterCount ()I
+	public final fun getHumanReadable ()Ljava/lang/String;
+	public final fun getModuleCount ()I
+	public final fun getValues ()Ljava/util/List;
+	public final fun getWidths ()[I
+	public final fun maxXDimensionMm (I)D
+	public static synthetic fun maxXDimensionMm$default (Lio/github/yurimontero/gs1/code128/Code128Symbol;IILjava/lang/Object;)D
+	public final fun toModules (I)[Z
+	public static synthetic fun toModules$default (Lio/github/yurimontero/gs1/code128/Code128Symbol;IILjava/lang/Object;)[Z
+	public fun toString ()Ljava/lang/String;
+	public final fun widthMm (DI)D
+	public static synthetic fun widthMm$default (Lio/github/yurimontero/gs1/code128/Code128Symbol;DIILjava/lang/Object;)D
+}
+
+public final class io/github/yurimontero/gs1/code128/Gs1Code128 {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/code128/Gs1Code128;
+	public static final field MAX_DATA_CHARACTERS I
+	public static final field MAX_LENGTH_MM D
+	public static final field QUIET_ZONE_MODULES I
+	public final fun encode (Lio/github/yurimontero/gs1/Gs1Message;Z)Lio/github/yurimontero/gs1/code128/Code128Symbol;
+	public static synthetic fun encode$default (Lio/github/yurimontero/gs1/code128/Gs1Code128;Lio/github/yurimontero/gs1/Gs1Message;ZILjava/lang/Object;)Lio/github/yurimontero/gs1/code128/Code128Symbol;
+}
+
+public final class io/github/yurimontero/gs1/datamatrix/DataMatrixShape : java/lang/Enum {
+	public static final field ANY Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;
+	public static final field RECTANGULAR Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;
+	public static final field SQUARE Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;
+	public static fun values ()[Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;
+}
+
+public final class io/github/yurimontero/gs1/datamatrix/DataMatrixSize {
+	public static final field Companion Lio/github/yurimontero/gs1/datamatrix/DataMatrixSize$Companion;
+	public final fun getColumns ()I
+	public final fun getDataCodewords ()I
+	public final fun getErrorCodewords ()I
+	public final fun getRows ()I
+	public final fun isSquare ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/datamatrix/DataMatrixSize$Companion {
+	public final fun getAll ()Ljava/util/List;
+	public final fun getRectangles ()Ljava/util/List;
+	public final fun getSquares ()Ljava/util/List;
+	public final fun of (II)Lio/github/yurimontero/gs1/datamatrix/DataMatrixSize;
+}
+
+public final class io/github/yurimontero/gs1/datamatrix/DataMatrixSymbol {
+	public final fun get (II)Z
+	public final fun getCodewords ()Ljava/util/List;
+	public final fun getColumns ()I
+	public final fun getHumanReadable ()Ljava/lang/String;
+	public final fun getRows ()I
+	public final fun getSize ()Lio/github/yurimontero/gs1/datamatrix/DataMatrixSize;
+	public final fun getUsedDataCodewords ()I
+	public final fun heightMm (DI)D
+	public static synthetic fun heightMm$default (Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;DIILjava/lang/Object;)D
+	public final fun toModules (I)[[Z
+	public static synthetic fun toModules$default (Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;IILjava/lang/Object;)[[Z
+	public fun toString ()Ljava/lang/String;
+	public final fun widthMm (DI)D
+	public static synthetic fun widthMm$default (Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;DIILjava/lang/Object;)D
+}
+
+public final class io/github/yurimontero/gs1/datamatrix/Gs1DataMatrix {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/datamatrix/Gs1DataMatrix;
+	public static final field QUIET_ZONE_MODULES I
+	public final fun encode (Lio/github/yurimontero/gs1/Gs1Message;Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;Lio/github/yurimontero/gs1/datamatrix/DataMatrixSize;)Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;
+	public static synthetic fun encode$default (Lio/github/yurimontero/gs1/datamatrix/Gs1DataMatrix;Lio/github/yurimontero/gs1/Gs1Message;Lio/github/yurimontero/gs1/datamatrix/DataMatrixShape;Lio/github/yurimontero/gs1/datamatrix/DataMatrixSize;ILjava/lang/Object;)Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;
+}
+
+public final class io/github/yurimontero/gs1/qrcode/Gs1QrCode {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/qrcode/Gs1QrCode;
+	public final fun encode (Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+	public static synthetic fun encode$default (Lio/github/yurimontero/gs1/qrcode/Gs1QrCode;Lio/github/yurimontero/gs1/Gs1Message;Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+	public final fun encodeUri (Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+	public static synthetic fun encodeUri$default (Lio/github/yurimontero/gs1/qrcode/Gs1QrCode;Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+}
+
+public final class io/github/yurimontero/gs1/qrcode/QrCode {
+	public static final field INSTANCE Lio/github/yurimontero/gs1/qrcode/QrCode;
+	public static final field QUIET_ZONE_MODULES I
+	public final fun encode (Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;Ljava/lang/Integer;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+	public static synthetic fun encode$default (Lio/github/yurimontero/gs1/qrcode/QrCode;Ljava/lang/String;Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;Ljava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;
+}
+
+public final class io/github/yurimontero/gs1/qrcode/QrCodeSymbol {
+	public final fun get (II)Z
+	public final fun getErrorCorrection ()Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public final fun getHumanReadable ()Ljava/lang/String;
+	public final fun getMask ()I
+	public final fun getSize ()I
+	public final fun getText ()Ljava/lang/String;
+	public final fun getVersion ()I
+	public final fun sizeMm (DI)D
+	public static synthetic fun sizeMm$default (Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;DIILjava/lang/Object;)D
+	public final fun toModules (I)[[Z
+	public static synthetic fun toModules$default (Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;IILjava/lang/Object;)[[Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/yurimontero/gs1/qrcode/QrErrorCorrection : java/lang/Enum {
+	public static final field H Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public static final field L Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public static final field M Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public static final field Q Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+	public static fun values ()[Lio/github/yurimontero/gs1/qrcode/QrErrorCorrection;
+}
+
+public final class io/github/yurimontero/gs1/render/SvgKt {
+	public static final fun toSvg (Lio/github/yurimontero/gs1/code128/Code128Symbol;DLjava/lang/String;IIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun toSvg (Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;DLjava/lang/String;ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun toSvg (Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;DLjava/lang/String;ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun toSvg$default (Lio/github/yurimontero/gs1/code128/Code128Symbol;DLjava/lang/String;IIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun toSvg$default (Lio/github/yurimontero/gs1/datamatrix/DataMatrixSymbol;DLjava/lang/String;ILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun toSvg$default (Lio/github/yurimontero/gs1/qrcode/QrCodeSymbol;DLjava/lang/String;ILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+}
+
