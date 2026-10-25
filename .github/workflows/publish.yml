@@ -1,0 +1,43 @@
+# Publishes gs1-core and gs1-compose to Maven Central when a version tag (v0.1.0, v1.2.3…) is pushed.
+# Runs on macOS, the only host that can build every target (iOS included) for one complete deployment.
+#
+# Repository secrets (Settings > Secrets and variables > Actions):
+#   MAVEN_CENTRAL_USERNAME, MAVEN_CENTRAL_PASSWORD  user token from https://central.sonatype.com/account
+#   SIGNING_KEY                                     gpg --export-secret-keys --armor <key id>
+#   SIGNING_KEY_PASSWORD                            passphrase of that key
+name: Publish
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - uses: actions/cache@v5
+        with:
+          path: ~/.konan
+          key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
+
+      # The version comes from the tag: v0.1.0 -> 0.1.0. The deployment is uploaded and validated;
+      # press "Publish" on https://central.sonatype.com/publishing/deployments to release it.
+      - name: Upload to Maven Central
+        run: ./gradlew publishToMavenCentral -Pversion="${GITHUB_REF_NAME#v}" --no-configuration-cache
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}

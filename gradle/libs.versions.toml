@@ -3,6 +3,7 @@ kotlin = "2.4.21"
 agp = "9.3.1"
 compose-multiplatform = "1.12.2"
 dokka = "2.2.0"
+maven-publish = "0.37.0"
 android-compileSdk = "37"
 android-minSdk = "23"
 
@@ -19,3 +20,4 @@ android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
