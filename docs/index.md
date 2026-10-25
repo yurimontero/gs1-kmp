@@ -47,4 +47,5 @@ Both modules support **Android**, **iOS**, **desktop JVM** (Windows, macOS, Linu
 
 ## Status
 
-The library is in development and not yet published to Maven Central.
+Version 0.1.0 is on Maven Central. Until 1.0.0, minor versions may change the public API; see the
+[changelog](https://github.com/yurimontero/gs1-kmp/blob/main/CHANGELOG.md).

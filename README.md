@@ -1,6 +1,7 @@
 # gs1-kmp
 
 [![CI](https://github.com/yurimontero/gs1-kmp/actions/workflows/ci.yml/badge.svg)](https://github.com/yurimontero/gs1-kmp/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.yurimontero/gs1-core)](https://central.sonatype.com/artifact/io.github.yurimontero/gs1-core)
 [![Docs](https://img.shields.io/badge/docs-yurimontero.github.io%2Fgs1--kmp-blue)](https://yurimontero.github.io/gs1-kmp/)
 
 Kotlin Multiplatform library to generate **GS1-128** (Code 128), **GS1 DataMatrix** and **GS1 Digital Link QR Code** barcodes on-device, with no third-party dependencies.
@@ -10,13 +11,11 @@ Kotlin Multiplatform library to generate **GS1-128** (Code 128), **GS1 DataMatri
 | `gs1-core` | GS1 element strings, validation, GS1 Digital Link URIs, Code 128, Data Matrix and QR Code encoders, SVG output. Depends only on the Kotlin standard library. | Android, iOS, JVM (desktop), JS, Wasm |
 | `gs1-compose` | Compose Multiplatform drawing layer on top of `gs1-core`. | Android, iOS, JVM (desktop), JS, Wasm |
 
-> Work in progress — not published yet.
-
 ## Coordinates
 
 ```kotlin
-implementation("io.github.yurimontero:gs1-core:<version>")
-implementation("io.github.yurimontero:gs1-compose:<version>")
+implementation("io.github.yurimontero:gs1-core:0.1.0")
+implementation("io.github.yurimontero:gs1-compose:0.1.0")
 ```
 
 ## Usage

@@ -2,13 +2,9 @@
 
 ## Add the dependency
 
-!!! note "Not published yet"
-    The library is not on Maven Central yet. Until it is, clone the repository next to your project and include
-    it as a composite build; Gradle then uses it for the coordinates below:
-
-    ```kotlin title="settings.gradle.kts"
-    includeBuild("../gs1-kmp")
-    ```
+The library is on [Maven Central](https://central.sonatype.com/namespace/io.github.yurimontero), which Gradle
+projects use by default. The latest version is listed in the
+[changelog](https://github.com/yurimontero/gs1-kmp/blob/main/CHANGELOG.md).
 
 In a Kotlin Multiplatform project, add the modules to `commonMain`:
 
@@ -16,9 +12,9 @@ In a Kotlin Multiplatform project, add the modules to `commonMain`:
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("io.github.yurimontero:gs1-core:<version>")
+            implementation("io.github.yurimontero:gs1-core:0.1.0")
             // Optional: composables for Compose Multiplatform (includes gs1-core)
-            implementation("io.github.yurimontero:gs1-compose:<version>")
+            implementation("io.github.yurimontero:gs1-compose:0.1.0")
         }
     }
 }

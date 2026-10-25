@@ -4,7 +4,7 @@
 `gs1-core`, so one dependency is enough.
 
 ```kotlin
-implementation("io.github.yurimontero:gs1-compose:<version>")
+implementation("io.github.yurimontero:gs1-compose:0.1.0")
 ```
 
 ## Composables
