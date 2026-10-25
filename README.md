@@ -59,6 +59,18 @@ Gs1QrCodeBarcode(message, domain = "https://example.com")
 val bitmap = Gs1DataMatrix.encode(message).toImageBitmap(modulePixels = 8)
 ```
 
+## Documentation
+
+Guides and API reference: https://yurimontero.github.io/gs1-kmp/ (published by `.github/workflows/docs.yml`).
+
+To preview locally:
+
+```bash
+pip install zensical==0.0.72
+zensical serve                               # guides at http://localhost:8000/gs1-kmp/
+./gradlew :dokkaGeneratePublicationHtml      # API reference in build/dokka/html
+```
+
 ## Building
 
 Requirements: JDK 17+ and the Android SDK (open the project once in Android Studio or IntelliJ IDEA, or create `local.properties` with `sdk.dir=/path/to/Android/Sdk`).
@@ -84,3 +96,23 @@ python3 tools/extract_dl_tests.py /path/to/gs1-syntax-engine   # regenerate Digi
 GS1 Digital Link URI generation and parsing follow the Syntax Engine and pass its reference test vectors. The QR Code encoder (ISO/IEC 18004, versions 1-40, levels L/M/Q/H) chooses the smallest mix of numeric, alphanumeric and byte segments; an uppercase domain such as `HTTPS://EXAMPLE.COM` gives a smaller symbol.
 
 Not checked yet: GS1 Company Prefix positions (`gcppos1`, `gcppos2`), coupon formats (AIs 8110, 8112) and AI pairing rules (`req`/`ex`).
+
+## License
+
+```
+Copyright 2026 Yuri Montero
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+See [NOTICE](NOTICE) for the GS1 material this library is derived from.

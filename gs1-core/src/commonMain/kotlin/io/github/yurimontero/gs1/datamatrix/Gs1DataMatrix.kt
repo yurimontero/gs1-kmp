@@ -25,7 +25,7 @@ public enum class DataMatrixShape {
  *
  * ```
  * val symbol = Gs1DataMatrix.encode(Gs1Message.parse("(01)09501101020917(17)261231(10)ABC123"))
- * symbol.rows; symbol.columns   // 18 x 18
+ * symbol.rows; symbol.columns   // 20 x 20
  * symbol[row, column]           // true = dark module
  * ```
  */

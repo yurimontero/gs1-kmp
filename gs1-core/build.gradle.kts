@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
+    alias(libs.plugins.dokka)
 }
 
 kotlin {
@@ -55,4 +56,16 @@ tasks.withType<KotlinJvmCompile>().configureEach {
 tasks.withType<JavaCompile>().configureEach {
     sourceCompatibility = "11"
     targetCompatibility = "11"
+}
+
+dokka {
+    moduleName.set("gs1-core")
+    dokkaSourceSets.configureEach {
+        includes.from("Module.md")
+        sourceLink {
+            localDirectory.set(file("src"))
+            remoteUrl.set(uri("https://github.com/yurimontero/gs1-kmp/tree/main/gs1-core/src"))
+            remoteLineSuffix.set("#L")
+        }
+    }
 }

@@ -6,6 +6,9 @@ build/
 # Kotlin
 .kotlin/
 
+# Documentation site output (zensical build)
+site/
+
 # Local machine settings (Android SDK path, signing keys…)
 local.properties
 

@@ -1,0 +1,92 @@
+[project]
+site_name = "gs1-kmp"
+site_url = "https://yurimontero.github.io/gs1-kmp/"
+site_description = "GS1-128, GS1 DataMatrix and GS1 Digital Link QR Code barcodes for Kotlin Multiplatform"
+site_author = "Yuri Montero"
+copyright = "Copyright &copy; 2026 Yuri Montero · Apache License 2.0"
+
+repo_url = "https://github.com/yurimontero/gs1-kmp"
+repo_name = "yurimontero/gs1-kmp"
+edit_uri = "edit/main/docs/"
+
+nav = [
+  { "Overview" = "index.md" },
+  { "Getting started" = "getting-started.md" },
+  { "GS1 data" = "gs1-data.md" },
+  { "Barcodes" = [
+    { "GS1-128" = "barcodes/gs1-128.md" },
+    { "GS1 DataMatrix" = "barcodes/datamatrix.md" },
+    { "GS1 Digital Link QR Code" = "barcodes/digital-link-qr.md" },
+  ] },
+  { "Compose" = "compose.md" },
+  { "SVG and printing" = "printing.md" },
+  { "API reference" = "api/index.html" },
+]
+
+[project.theme]
+language = "en"
+features = [
+  "content.action.edit",
+  "content.code.annotate",
+  "content.code.copy",
+  "content.tabs.link",
+  "content.tooltips",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.path",
+  "navigation.sections",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+]
+
+[project.theme.icon]
+logo = "lucide/scan-barcode"
+repo = "fontawesome/brands/github"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "indigo"
+accent = "indigo"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "indigo"
+accent = "indigo"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/yurimontero/gs1-kmp"
+
+[project.markdown_extensions]
+abbr = {}
+admonition = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+toc.permalink = true
+pymdownx.betterem = {}
+pymdownx.details = {}
+pymdownx.highlight.anchor_linenums = true
+pymdownx.highlight.line_spans = "__span"
+pymdownx.highlight.pygments_lang_class = true
+pymdownx.inlinehilite = {}
+pymdownx.keys = {}
+pymdownx.superfences = {}
+pymdownx.tabbed.alternate_style = true
+pymdownx.tabbed.combine_header_slug = true

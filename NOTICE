@@ -1,4 +1,5 @@
 gs1-kmp
+Copyright 2026 Yuri Montero
 
 This product includes material derived from the following Apache License 2.0 works:
 
@@ -8,4 +9,6 @@ This product includes material derived from the following Apache License 2.0 wor
 
 - GS1 Syntax Engine (https://github.com/gs1/gs1-syntax-engine)
   Copyright (c) 2022-2025 GS1 AISBL
-  Used for: Linters.kt (port of the GS1 Barcode Syntax Tests) and the generated LinterReferenceTest.kt
+  Used for: Linters.kt (port of the GS1 Barcode Syntax Tests), Gs1DigitalLink.kt (GS1 Digital Link
+  URI generation and parsing rules) and the generated LinterReferenceTest.kt and
+  DigitalLinkReferenceTest.kt
